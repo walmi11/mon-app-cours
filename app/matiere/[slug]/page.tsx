@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
+import { toDate } from "@/lib/dateUtils";
 import { useAuth } from "@/lib/auth";
 import ThemeToggle from "@/components/ThemeToggle";
 import { getCoursByMatiere, creerCours, getMatieres, getMatiereBySlug, Cours, Matiere } from "@/lib/firestore";
@@ -223,7 +224,7 @@ export default function MatierePage() {
                       <div style={{ flex: 1, marginLeft: "12px" }}>
                         <div className="card-title">{c.titre || "Sans titre"}</div>
                         <div className="card-meta">
-                          {new Date(c.date).toLocaleDateString("fr-FR", {
+                          {toDate(c.date).toLocaleDateString("fr-FR", {
                             weekday: "long",
                             day: "numeric",
                             month: "long",

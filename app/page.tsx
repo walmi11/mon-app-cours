@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { toDate } from "@/lib/dateUtils";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/lib/auth";
 import { getMatieres, creerMatiere, getCoursRecents, getCoursByMatiere, Matiere, Cours } from "@/lib/firestore";
@@ -200,7 +201,7 @@ export default function Home() {
                     </div>
                     <div className="card-meta">
                       <span>📂 {c.matiere}</span><span>•</span>
-                      <span>{new Date(c.date).toLocaleDateString("fr-FR", { day: "numeric", month: "short" })}</span>
+                      <span>{toDate(c.date).toLocaleDateString("fr-FR", { day: "numeric", month: "short" })}</span>
                     </div>
                   </Link>
                 ))}

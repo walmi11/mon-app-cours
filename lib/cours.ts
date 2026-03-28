@@ -1,3 +1,5 @@
+import { getTime } from "./dateUtils";
+
 // === STOCKAGE LOCAL ===
 
 export type Cours = {
@@ -63,12 +65,12 @@ export function creerCours(matiere: string): string {
 export function getCoursByMatiere(matiere: string): Cours[] {
   return getAllCours()
     .filter((c) => c.matiere === matiere)
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    .sort((a, b) => getTime(b.date) - getTime(a.date));
 }
 
 export function getCoursRecents(nb: number = 10): Cours[] {
   return getAllCours()
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .sort((a, b) => getTime(b.date) - getTime(a.date))
     .slice(0, nb);
 }
 
@@ -131,13 +133,13 @@ export function creerTache(titre: string, type: "revision" | "exercice" | "devoi
 }
 
 export function getToutesTaches(): Tache[] {
-  return getAllTaches().sort((a, b) => new Date(a.deadline).getTime() - new Date(b.deadline).getTime());
+  return getAllTaches().sort((a, b) => getTime(a.deadline) - getTime(b.deadline));
 }
 
 export function getTachesByMatiere(matiere: string): Tache[] {
   return getAllTaches()
     .filter((t) => t.matiere === matiere)
-    .sort((a, b) => new Date(a.deadline).getTime() - new Date(b.deadline).getTime());
+    .sort((a, b) => getTime(a.deadline) - getTime(b.deadline));
 }
 
 export function getTacheById(id: string): Tache | null {

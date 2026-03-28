@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { toDate } from "@/lib/dateUtils";
 import { useAuth } from "@/lib/auth";
 import { getToutesTaches, creerTache, toggleTache, supprimerTache, getMatieres, Matiere, Tache } from "@/lib/firestore";
 import ThemeToggle from "@/components/ThemeToggle";
@@ -134,13 +135,13 @@ export default function PlanningPage() {
     tachesFiltrees = tachesFiltrees.filter((t) => t.complete);
   }
 
-  const tachesToday = tachesFiltrees.filter((t) => new Date(t.deadline).toDateString() === new Date().toDateString());
+  const tachesToday = tachesFiltrees.filter((t) => toDate(t.deadline).toDateString() === new Date().toDateString());
   const tachesWeek = tachesFiltrees.filter((t) => {
-    const d = new Date(t.deadline);
+    const d = toDate(t.deadline);
     const today = new Date();
     return d >= today && d <= new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
   });
-  const tachesLater = tachesFiltrees.filter((t) => new Date(t.deadline) > new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000));
+  const tachesLater = tachesFiltrees.filter((t) => toDate(t.deadline) > new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000));
 
   const iconeType: Record<string, string> = {
     revision: "📚",
@@ -365,7 +366,7 @@ export default function PlanningPage() {
                         {iconeType[t.type]} {t.titre}
                       </div>
                       <div style={{ fontSize: "12px", color: "var(--text-secondary)", marginTop: "4px" }}>
-                        {t.matiere} • Deadline: {new Date(t.deadline).toLocaleDateString("fr-FR")}
+                        {t.matiere} • Deadline: {toDate(t.deadline).toLocaleDateString("fr-FR")}
                       </div>
                     </div>
                     <div style={{ fontSize: "18px" }}>{iconepriorite[t.priorite]}</div>
@@ -422,7 +423,7 @@ export default function PlanningPage() {
                         {iconeType[t.type]} {t.titre}
                       </div>
                       <div style={{ fontSize: "12px", color: "var(--text-secondary)", marginTop: "4px" }}>
-                        {t.matiere} • Deadline: {new Date(t.deadline).toLocaleDateString("fr-FR")}
+                        {t.matiere} • Deadline: {toDate(t.deadline).toLocaleDateString("fr-FR")}
                       </div>
                     </div>
                     <div style={{ fontSize: "18px" }}>{iconepriorite[t.priorite]}</div>
@@ -479,7 +480,7 @@ export default function PlanningPage() {
                         {iconeType[t.type]} {t.titre}
                       </div>
                       <div style={{ fontSize: "12px", color: "var(--text-secondary)", marginTop: "4px" }}>
-                        {t.matiere} • Deadline: {new Date(t.deadline).toLocaleDateString("fr-FR")}
+                        {t.matiere} • Deadline: {toDate(t.deadline).toLocaleDateString("fr-FR")}
                       </div>
                     </div>
                     <div style={{ fontSize: "18px" }}>{iconepriorite[t.priorite]}</div>
