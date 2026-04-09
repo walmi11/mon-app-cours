@@ -1,5 +1,5 @@
 {
-  "name": "mes-cours",
+  "name": "quartz",
   "version": "1.0.0",
   "description": "Application de prise de notes de cours",
   "main": "electron/main.js",
@@ -12,8 +12,8 @@
     "dist": "npm run build && electron-builder"
   },
   "build": {
-    "appId": "com.walid.mescours",
-    "productName": "MesCours",
+    "appId": "com.walid.quartz",
+    "productName": "Quartz",
     "directories": {
       "output": "dist"
     },
@@ -33,7 +33,7 @@
       "allowToChangeInstallationDirectory": false,
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
-      "shortcutName": "MesCours"
+      "shortcutName": "Quartz"
     }
   },
   "devDependencies": {
