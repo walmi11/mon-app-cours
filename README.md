@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Quartz
 
-## Getting Started
+**Quartz** est une application locale de prise de notes et de gestion de cours sur ordinateur (via Electron et Next.js). Avec son interface moderne *glassmorphism* aux teintes violettes, Quartz permet d'organiser facilement vos matières, de modifier vos cours avec un éditeur enrichi, et de suivre vos tâches.
 
-First, run the development server:
+## Fonctionnalités
 
-```bash
+- **Tableau de bord dynamique** : Suivi du nombre de cours, de matières et de tâches restantes.
+- **Gestion des Matières** : Création de matières personnalisées avec des icônes uniques.
+- **Éditeur de Cours** : Rédigez vos notes de cours avec un éditeur intuitif et une sauvegarde automatique locale.
+- **Thème Visuel Quartz** : Design contemporain *glassmorphism*, animations fluides et tons violets élégants.
+- **100% Local (Privacy First)** : Toutes vos données sont stockées de façon sécurisée directement sur votre ordinateur (data/db.json).
+
+## Technologies
+
+- **Next.js 15+** (App Router)
+- **Tailwind CSS** (Styles complexes et gradients)
+- **Lucide React** (Icônes)
+- **Electron** (Conversion en application de bureau native)
+
+## Installation & Utilisation
+
+`ash
+# Installer les dépendances
+npm install
+
+# Lancer en mode développement (Web)
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# Construire l'application
+npm run build
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# Lancer la version Bureau (Electron)
+npm run electron
+`
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+> Note : Les données sont persistées dans le dossier data de votre installation locale.
